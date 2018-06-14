@@ -7,9 +7,10 @@ public class Main {
   public static void main(String[] args){
     Game game = new Game();
     Scanner s = new Scanner(System.in);
-    while (true){
+    boolean play = true;
+    while (play){
       game.newWord();
-      while(true){
+      while(play){
         if (game.isOver()){
           System.out.println(game.status());
           break;
@@ -22,6 +23,8 @@ public class Main {
             char letter = str.charAt(0);
             game.guess(letter);
           }else{
+            if (str.charAt(0) == '0')
+                play = false;
             System.out.println("Not a letter");
           }
         }
